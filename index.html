@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sample HTML Page</title>
+    <style>
+        :root{
+            --bg:#fff; --fg:#111; --accent:#0066cc;
+        }
+        [data-theme="dark"]{ --bg:#0d1117; --fg:#e6edf3; --accent:#58a6ff; }
+        *{box-sizing:border-box}
+        body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--fg);line-height:1.4}
+        header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid rgba(0,0,0,.06)}
+        h1{font-size:1.125rem;margin:0}
+        nav a{margin-left:.75rem;color:var(--accent);text-decoration:none}
+        main{padding:1.25rem;max-width:900px;margin:0 auto}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1rem 0}
+        .card{padding:1rem;border-radius:8px;background:linear-gradient(180deg,rgba(0,0,0,0.03),transparent);box-shadow:0 1px 2px rgba(0,0,0,.04)}
+        form{display:grid;gap:.5rem;max-width:520px}
+        label{font-size:.875rem}
+        input[type="text"],input[type="email"],textarea{width:100%;padding:.5rem;border:1px solid rgba(0,0,0,.12);border-radius:6px;background:transparent;color:inherit}
+        button{cursor:pointer;padding:.5rem .75rem;border-radius:6px;border:0;background:var(--accent);color:white}
+        footer{padding:1rem;text-align:center;font-size:.875rem;color:rgba(0,0,0,.6)}
+        .msg{font-size:.875rem;color:#d04545}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sample Page</h1>
+        <div>
+            <button id="themeToggle" aria-pressed="false">Toggle theme</button>
+            <nav aria-label="Main">
+                <a href="#features">Features</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro">
+            <p>Responsive example layout with small interactive bits. Resize the window to see the grid adapt.</p>
+        </section>
+
+        <section id="features" class="cards" aria-label="Feature cards">
+            <article class="card"><h3>Fast</h3><p>Minimal, performant markup and styles.</p></article>
+            <article class="card"><h3>Accessible</h3><p>Semantic structure and sensible defaults.</p></article>
+            <article class="card"><h3>Simple</h3><p>Easy to read and extend.</p></article>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contactForm" novalidate>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" required />
+
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <div class="msg" id="formMessage" role="status" aria-live="polite"></div>
+
+                <div>
+                    <button type="submit">Send</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        © Example — Built with plain HTML, CSS, and a bit of JS
+    </footer>
+
+    <script>
+        // Theme toggle (light/dark)
+        const btn = document.getElementById('themeToggle');
+        btn.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            btn.setAttribute('aria-pressed', String(next === 'dark'));
+        });
+
+        // Simple client-side form handling
+        const form = document.getElementById('contactForm');
+        const msg = document.getElementById('formMessage');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                msg.textContent = 'Please fill out all required fields correctly.';
+                return;
+            }
+            // Simulate send
+            msg.style.color = 'green';
+            msg.textContent = 'Message sent (simulated). Thank you!';
+            setTimeout(() => { form.reset(); msg.textContent = ''; msg.style.color = ''; }, 2000);
+        });
+    </script>
+</body>
+</html>
