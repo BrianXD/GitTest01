@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sample Page — GitTest01</title>
+    <meta name="description" content="A simple, responsive sample page for development and testing." />
+    <style>
+        :root{
+            --bg:#0f1724;
+            --card:#0b1220;
+            --accent:#06b6d4;
+            --muted:#94a3b8;
+            --glass: rgba(255,255,255,0.03);
+            --radius:10px;
+            color-scheme: dark;
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+            background:
+                radial-gradient(600px 300px at 10% 10%, rgba(6,182,212,0.08), transparent 10%),
+                linear-gradient(180deg,#071028 0%, #091827 60%);
+            color:#e6eef8;
+            -webkit-font-smoothing:antialiased;
+            line-height:1.45;
+            padding:24px;
+        }
+        .container{max-width:1000px;margin:0 auto}
+        header{
+            display:flex;
+            gap:16px;
+            align-items:center;
+            justify-content:space-between;
+            margin-bottom:20px;
+        }
+        .brand{display:flex;gap:12px;align-items:center}
+        .logo{
+            width:46px;height:46px;border-radius:8px;
+            background:linear-gradient(135deg,var(--accent),#7c3aed);
+            display:flex;align-items:center;justify-content:center;
+            font-weight:700;color:#042028;
+            box-shadow:0 6px 18px rgba(6,22,40,0.6);
+        }
+        nav a{color:var(--muted);text-decoration:none;margin-left:12px;font-size:0.95rem}
+        nav a:hover{color:var(--accent)}
+        main{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+        .card{
+            background:linear-gradient(180deg,var(--glass),transparent);
+            border:1px solid rgba(255,255,255,0.04);
+            padding:18px;border-radius:var(--radius);
+            box-shadow:0 6px 18px rgba(2,6,23,0.6);
+        }
+        .hero{
+            padding:28px;border-radius:calc(var(--radius)+6px);
+            display:flex;flex-direction:column;gap:12px;
+            background:
+                linear-gradient(180deg, rgba(6,182,212,0.06), transparent);
+        }
+        h1{margin:0;font-size:1.6rem}
+        p.lead{color:var(--muted);margin:0;font-size:0.98rem}
+        .cta{margin-top:12px;display:flex;gap:10px}
+        button.primary{
+            background:linear-gradient(90deg,var(--accent),#7c3aed);
+            border:0;padding:10px 14px;border-radius:10px;color:#042028;font-weight:600;
+            cursor:pointer;
+        }
+        button.ghost{
+            background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);
+            padding:10px 12px;border-radius:10px;cursor:pointer;
+        }
+        .features{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+        .feature{padding:12px;border-radius:8px;background:rgba(255,255,255,0.02)}
+        .sidebar{position:sticky;top:24px}
+        .preview{height:160px;background:linear-gradient(120deg,#061428 0%, #072033 60%);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.95rem}
+        form{display:flex;flex-direction:column;gap:10px}
+        label{font-size:0.8rem;color:var(--muted)}
+        input[type="text"],input[type="email"],textarea{
+            background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit;
+            outline:none;
+        }
+        textarea{min-height:100px;resize:vertical}
+        footer{margin-top:28px;color:var(--muted);font-size:0.9rem;text-align:center}
+        @media (max-width:900px){
+            main{grid-template-columns:1fr}
+            .sidebar{position:static}
+        }
+        .small{font-size:0.85rem;color:var(--muted)}
+        .grid-samples{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+        .tile{background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);padding:10px;border-radius:8px;text-align:center;font-size:0.85rem}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="logo" aria-hidden="true">GC</div>
+                <div>
+                    <div style="font-weight:700">Sample Project</div>
+                    <div class="small">A minimal starter page</div>
+                </div>
+            </div>
+            <nav aria-label="Main navigation">
+                <a href="#features">Features</a>
+                <a href="#examples">Examples</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="card hero" aria-labelledby="hero-title">
+                <h1 id="hero-title">A lightweight sample page</h1>
+                <p class="lead">This page demonstrates a clean, responsive layout with accessible markup and small interactive elements for testing and iteration.</p>
+                <div class="cta">
+                    <button class="primary" id="demoBtn">Try demo</button>
+                    <button class="ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+                </div>
+
+                <div id="features" class="features" aria-hidden="false">
+                    <div class="feature">
+                        <strong>Semantic HTML</strong>
+                        <div class="small">Better accessibility and SEO</div>
+                    </div>
+                    <div class="feature">
+                        <strong>Responsive</strong>
+                        <div class="small">Mobile-first and flexible layout</div>
+                    </div>
+                    <div class="feature">
+                        <strong>Minimal JS</strong>
+                        <div class="small">Small interactive behaviors</div>
+                    </div>
+                    <div class="feature">
+                        <strong>Dark-friendly</strong>
+                        <div class="small">Designed with a dark color scheme</div>
+                    </div>
+                </div>
+
+                <div id="examples" style="margin-top:16px">
+                    <h3 style="margin:0 0 8px 0">Examples</h3>
+                    <div class="grid-samples" role="list">
+                        <div class="tile" role="listitem">Card</div>
+                        <div class="tile" role="listitem">Form</div>
+                        <div class="tile" role="listitem">Grid</div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <div class="card">
+                    <div class="preview">Live preview area</div>
+                    <div style="margin-top:12px">
+                        <label for="title">Page title</label>
+                        <input id="title" type="text" placeholder="Enter a title" />
+                    </div>
+
+                    <form id="contact" style="margin-top:12px" aria-labelledby="contact-heading">
+                        <h4 id="contact-heading" style="margin:0 0 6px 0">Contact</h4>
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="you@example.com" required />
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Say hello"></textarea>
+                        <div style="display:flex;gap:8px;margin-top:6px">
+                            <button type="submit" class="primary">Send</button>
+                            <button type="button" class="ghost" id="clear">Clear</button>
+                        </div>
+                        <div id="status" class="small" role="status" aria-live="polite" style="margin-top:8px"></div>
+                    </form>
+                </div>
+
+                <div class="card" style="margin-top:12px">
+                    <div style="font-weight:700;margin-bottom:8px">Quick links</div>
+                    <nav aria-label="Quick links">
+                        <a href="#features">Features</a><br/>
+                        <a href="#examples">Examples</a><br/>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="small">
+            © Sample Project — Built for testing and demonstration. View in your editor: /d:/VSCode/GitTest01/index2.html
+        </footer>
+    </div>
+
+    <script>
+        // Minimal interactivity
+        (function(){
+            const demoBtn = document.getElementById('demoBtn');
+            const status = document.getElementById('status');
+            const form = document.querySelector('form#contact');
+            const clearBtn = document.getElementById('clear');
+            const titleInput = document.getElementById('title');
+            const preview = document.querySelector('.preview');
+
+            demoBtn.addEventListener('click', () => {
+                alert('Demo button clicked — replace with your own action.');
+            });
+
+            titleInput.addEventListener('input', (e) => {
+                const v = e.target.value.trim();
+                preview.textContent = v ? v : 'Live preview area';
+            });
+
+            clearBtn.addEventListener('click', () => {
+                form.reset();
+                preview.textContent = titleInput.value = '';
+                status.textContent = '';
+            });
+
+            form.addEventListener('submit', (ev) => {
+                ev.preventDefault();
+                const email = form.email.value.trim();
+                const msg = form.message.value.trim();
+                if(!email){
+                    status.textContent = 'Please provide an email.';
+                    return;
+                }
+                status.textContent = 'Sending…';
+                // Simulate async send
+                setTimeout(() => {
+                    status.textContent = `Thanks! Message queued for ${email}.`;
+                    form.reset();
+                }, 900);
+            });
+        })();
+    </script>
+</body>
+</html>
