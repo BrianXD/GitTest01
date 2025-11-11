@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch HTML in Chrome",
+      "file": "${workspaceFolder}/${input:htmlFile}"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "htmlFile",
+      "description": "Select an HTML file to debug",
+      "options": [
+        "index.html",
+        "index2.html",
+        "branch01.html"
+      ]
+    }
+  ]
+}
